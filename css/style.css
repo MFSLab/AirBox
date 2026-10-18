@@ -1,0 +1,223 @@
+:root {
+    --ink: #dbe9f0;
+    /* texto principal */
+    --ink-soft: #7f96a8;
+    /* texto secundario */
+    --teal: #6ecfc4;
+    /* acento menta */
+    --teal-deep: #4aaca3;
+    --teal-light: #a6e6dc;
+    --hold: #b3a7ec;
+    /* color de "Aguanta" */
+    --track: #22374a;
+    /* recorrido base del cuadrado */
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    color: var(--ink);
+    background:
+        radial-gradient(1100px 600px at 12% -5%, #123036 0%, transparent 60%),
+        radial-gradient(900px 520px at 88% 8%, #1a2740 0%, transparent 58%),
+        linear-gradient(170deg, #0a1420 0%, #0d1b2a 52%, #0b1a24 100%);
+    background-attachment: fixed;
+}
+
+/* ---------- Tarjeta ---------- */
+.airbox-card {
+    width: min(92vw, 420px);
+    border: 1px solid rgba(140, 200, 200, 0.12);
+    border-radius: 30px;
+    background: rgba(18, 30, 45, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow:
+        0 30px 60px -30px rgba(0, 0, 0, 0.75),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    padding: clamp(1.5rem, 5vw, 2.25rem);
+}
+
+.brand {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.brand span {
+    color: var(--teal);
+    text-shadow: 0 0 24px rgba(110, 207, 196, 0.35);
+}
+
+.tagline {
+    margin: 0.35rem 0 0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+/* ---------- Caja de respiración ---------- */
+.breath-wrap {
+    position: relative;
+    width: min(72vw, 300px);
+    aspect-ratio: 1 / 1;
+    margin: 1.5rem auto 1.6rem;
+}
+
+.breath-wrap svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.track {
+    fill: none;
+    stroke: var(--track);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.progress {
+    fill: none;
+    stroke: url(#strokeGrad);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(110, 207, 196, 0.4));
+}
+
+.dot-halo {
+    fill: rgba(110, 207, 196, 0.22);
+}
+
+.dot {
+    fill: var(--teal-light);
+    filter: drop-shadow(0 0 8px rgba(166, 230, 220, 0.6));
+}
+
+.breath-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    pointer-events: none;
+}
+
+.phase {
+    font-size: clamp(1.35rem, 5.5vw, 1.65rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    will-change: opacity, transform;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.phase.is-hold {
+    color: var(--hold);
+    text-shadow: 0 0 22px rgba(179, 167, 236, 0.55);
+}
+
+.phase.animate {
+    animation: fadeUp 0.45s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.count {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Botón ---------- */
+.btn-airbox {
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 2.1rem;
+    font-family: inherit;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #08161d;
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+    box-shadow: 0 14px 30px -14px rgba(110, 207, 196, 0.75);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-airbox:hover {
+    color: #08161d;
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    box-shadow: 0 18px 34px -14px rgba(110, 207, 196, 0.85);
+}
+
+.btn-airbox:active {
+    transform: translateY(0);
+}
+
+.btn-airbox:focus-visible {
+    outline: 3px solid rgba(110, 207, 196, 0.4);
+    outline-offset: 3px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    padding: 1.25rem 1rem 1.75rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    text-align: center;
+}
+
+.site-footer a {
+    color: var(--teal);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: var(--teal-light);
+    border-bottom-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .phase.animate {
+        animation: none;
+    }
+
+    .btn-airbox {
+        transition: none;
+    }
+}
